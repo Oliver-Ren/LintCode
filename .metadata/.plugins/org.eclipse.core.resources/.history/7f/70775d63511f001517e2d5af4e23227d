@@ -1,0 +1,16 @@
+package wildcardMatching;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class SolutionTest {
+
+	@Test
+	public void test() {
+		Solution test1 = new Solution();
+		boolean result = test1.isMatch("bbbba", "?*a*a");
+		System.out.println(result);
+	}
+
+}

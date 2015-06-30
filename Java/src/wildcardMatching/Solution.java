@@ -1,3 +1,5 @@
+package wildcardMatching;
+
 public class Solution {
     /**
      * @param s: A string 
@@ -12,7 +14,7 @@ public class Solution {
 		int lenS = s.length();
 
 
-		while (headPtr < p.length() && p.charAt(headPtr) != '*') {
+		while (headPtr < p.length() && tailPtr < s.length() && p.charAt(headPtr) != '*') {
 			if (p.charAt(headPtr) == s.charAt(headPtr)
 					|| p.charAt(headPtr) == '?') {
 				headPtr++;
@@ -25,10 +27,10 @@ public class Solution {
 			return true;
 		}
 
-		while (tailPtr < p.length() && p.charAt(lenP - tailPtr - 1) != '*') {
+		while (tailPtr < p.length() && tailPtr < s.length() && p.charAt(lenP - tailPtr - 1) != '*') {
 			if (p.charAt(lenP - tailPtr - 1) == s.charAt(lenS - tailPtr - 1)
 				|| p.charAt(lenP - tailPtr - 1) == '?') {
-				tailPtr--;
+				tailPtr++;
 			} else {
 				return false;
 			}
@@ -37,9 +39,16 @@ public class Solution {
 		if (headPtr == lenP - tailPtr - 1) {
 			return true;
 		} else {
-			return isMatch(s.substring(headPtr, lenS - tailPtr - 1), p.substring(headPtr, lenP - tailPtr - 1));
+			for (int i = 0; headPtr + i < lenS - tailPtr; i++) {
+				if (isMatch(s.substring(headPtr + i, lenS - tailPtr), p.substring(headPtr + 1, lenP - tailPtr - 1))) {
+					return true;
+				}
+			}
+
+			return false;
 		}
 	}
+}
 
 
 
@@ -47,6 +56,4 @@ public class Solution {
 
 
 
-     }
-}
 
