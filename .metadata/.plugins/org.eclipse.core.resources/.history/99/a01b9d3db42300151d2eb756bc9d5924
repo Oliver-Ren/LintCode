@@ -13,7 +13,7 @@ public class Solution2 {
         int snapshotP = -1;
         int snapshotS = -1;
 
-        while (ptrS < lenS) {
+        while (ptrS < lenS && ptrP < lenP) {
 
             if (ptrP < lenP && (p.charAt(ptrP) == '?' || 
                     s.charAt(ptrS) == p.charAt(ptrP))) {

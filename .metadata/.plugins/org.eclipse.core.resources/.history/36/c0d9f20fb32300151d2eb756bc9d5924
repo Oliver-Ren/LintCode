@@ -13,21 +13,21 @@ public class Solution2 {
         int snapshotP = -1;
         int snapshotS = -1;
 
-        while (ptrS < lenS) {
+        while (ptrS < lenS && ptrP < lenP) {
 
-            if (ptrP < lenP && (p.charAt(ptrP) == '?' || 
-                    s.charAt(ptrS) == p.charAt(ptrP))) {
+            if (p.charAt(ptrP) == '?' || 
+                    s.charAt(ptrS) == p.charAt(ptrP)) {
                 ptrS++;
                 ptrP++;
             }
 
-            else if (ptrP < lenP && p.charAt(ptrP) == '*') {
+            else if (p.charAt(ptrP) == '*') {
                 ptrP++;
                 snapshotP = ptrP;
                 snapshotS = ptrS;
             }
 
-            else if (snapshotP >= 0) {
+            else if (p.charAt(ptrP) != s.charAt(ptrS) && snapshotP >= 0) {
                 ptrS = ++snapshotS;
                 ptrP = snapshotP;
             } else {
@@ -40,10 +40,14 @@ public class Solution2 {
             ptrP++;
         }
 
+        if (ptrS < lenS && p.charAt(lenP - 1) == '*') {
+            ptrS = lenS;
+        }
+
         /* 
          * The condition where the two pointers
          * are all at the end of those strings. */
-        if (ptrP == lenP)  {
+        if (ptrS == lenS && ptrP == lenP)  {
             return true;
         }
             
