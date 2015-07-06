@@ -2,7 +2,7 @@ package wildcardMatching;
 /* This is the greedy approach for the wild cart matching. */
 public class Solution2 {
 	public boolean isMatch(String s, String p) {
-		if (s == null || p == null) {
+        if (s == null || p == null) {
             return false;
         }
         
@@ -24,11 +24,10 @@ public class Solution2 {
             else if (p.charAt(ptrP) == '*') {
                 ptrP++;
                 snapshotP = ptrP;
-                snapshotS = ptrS;
             }
 
             else if (p.charAt(ptrP) != s.charAt(ptrS) && snapshotP >= 0) {
-                ptrS = ++snapshotS;
+                ptrS++;
                 ptrP = snapshotP;
             } else {
                 return false;
