@@ -1,5 +1,4 @@
-package wildcardMatching;
-/* This is the greedy approach for the wild cart matching. */
+/* This is another approach for the wild cart matching. */
 public class Solution2 {
 	public boolean isMatch(String s, String p) {
         if (s == null || p == null) {
@@ -10,7 +9,7 @@ public class Solution2 {
         int lenP = p.length();
         int ptrS = 0;
         int ptrP = 0;
-        int snapshotP = -1;
+        int snapshotS = -1;
 
         while (ptrS < lenS && ptrP < lenP) {
 
@@ -22,12 +21,12 @@ public class Solution2 {
 
             else if (p.charAt(ptrP) == '*') {
                 ptrP++;
-                snapshotP = ptrP;
+                snapshotS = ptrS;
             }
 
-            else if (p.charAt(ptrP) != s.charAt(ptrS) && snapshotP >= 0) {
-                ptrS++;
-                ptrP = snapshotP;
+            else if (p.charAt(ptrP) != s.charAt(ptrS) && snapshotS >= 0) {
+                snapshotS++;
+                ptrS = snapshotS;
             } else {
                 return false;
             }
@@ -38,14 +37,10 @@ public class Solution2 {
             ptrP++;
         }
 
-        if (ptrS < lenS && p.charAt(lenP - 1) == '*') {
-            ptrS = lenS;
-        }
-
         /* 
          * The condition where the two pointers
          * are all at the end of those strings. */
-        if (ptrS == lenS && ptrP == lenP)  {
+        if (ptrS == lenS && ptrP == lenP || snapshotS >= 0 && ptrP == lenP) {
             return true;
         }
             

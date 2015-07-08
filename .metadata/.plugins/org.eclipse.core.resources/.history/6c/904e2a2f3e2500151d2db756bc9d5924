@@ -1,5 +1,4 @@
-package wildcardMatching;
-/* This is the greedy approach for the wild cart matching. */
+/* This is another approach for the wild cart matching. */
 public class Solution2 {
 	public boolean isMatch(String s, String p) {
         if (s == null || p == null) {
