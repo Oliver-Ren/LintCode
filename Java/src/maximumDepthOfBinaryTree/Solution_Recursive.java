@@ -13,7 +13,7 @@
 /* The recursive solution.
  * time complexity: O(n), where n is the number of nodes.
  * space complexity: O(logn).
- * status: 
+ * status: accpted, 2655ms. 
  */
 
 public class Solution {
