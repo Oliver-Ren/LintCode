@@ -9,13 +9,6 @@
  *     }
  * }
  */
-
-/** The iterative solution using binary tree level order traversal.
- * time complexity: O(n)
- * space complexity: O(sqrt(n))
- * status: accepted, 639msms.
- */
-
 public class Solution {
     /**
      * @param root: a TreeNode, the root of the binary tree
