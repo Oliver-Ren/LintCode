@@ -1,0 +1,9 @@
+package playground;
+
+public class Solution {
+	public void test() {
+		private LinkedList<Entry>[] hashTable;
+		hashTable = new LinkedList<Entry>[3];
+	}
+
+}
